@@ -73,10 +73,12 @@ int main() {
     // Violation: Use of atoi is forbidden.
     int num = atoi("123");
 
-    int carr[10];
+    template <class T>
+    void testFunction(T t) {
+        assert(sizeof(long) <= sizeof(long long) && "long long is smaller than long!"); // Noncompliant
+        assert(std::is_integral_v<T> && "This template only works for integral types"); // Noncompliant
+        assert(t > 0); // Compliant: only known at runtime
 
-    void process() {
-        std::size_t size = sizeof(carr) / sizeof(int); // Noncompliant
     }
 
     // lowercase suffixes
