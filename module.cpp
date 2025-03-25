@@ -50,13 +50,12 @@ void pointerConversion() {
 // Violation: Enumerations shall be declared as scoped enum classes.
 enum Color { RED, GREEN, BLUE };
 
-void outerFunction() {
-    // Violation: Function declared at block scope.
-    void innerFunction() {
-        std::cout << "Inside inner function" << std::endl;
-    }
-    innerFunction();
+void f() {
+    int a;
+    string b();
+    short c(short (a));
 }
+  
 
 int main() {
     MyNamespace::helper(); // Which version is called is ambiguous.
