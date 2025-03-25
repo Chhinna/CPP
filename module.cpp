@@ -73,14 +73,17 @@ int main() {
     // Violation: Use of atoi is forbidden.
     int num = atoi("123");
 
-    template <class T>
-    void testFunction(T t) {
-        assert(sizeof(long) <= sizeof(long long) && "long long is smaller than long!"); // Noncompliant
-        assert(std::is_integral_v<T> && "This template only works for integral types"); // Noncompliant
-        assert(t > 0); // Compliant: only known at runtime
-
+    struct Coordinate {
+        int x;
+        int y;
+    };
+    
+    long readInteger();
+    
+    auto readCoordinate() {
+    // Be aware of the narrowing conversions on the next line.
+    return Coordinate(readInteger(), readInteger()); // Noncompliant
     }
-
     // lowercase suffixes
     const int        a = 0u;      // Noncompliant
     const int        b = 0l;      // Noncompliant
