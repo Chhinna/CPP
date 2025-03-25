@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstdlib> // Violation: Use of atoi from <cstdlib> is disallowed by AUTOSAR.
 
+typedef void (*FunctionPointerType)(int);
+
 // Violation: In a namespace, the identifier of a static function shall not be reused.
 namespace MyNamespace {
     static void helper() {
@@ -73,17 +75,10 @@ int main() {
     // Violation: Use of atoi is forbidden.
     int num = atoi("123");
 
-    struct Coordinate {
-        int x;
-        int y;
-    };
-    
-    long readInteger();
-    
-    auto readCoordinate() {
-    // Be aware of the narrowing conversions on the next line.
-    return Coordinate(readInteger(), readInteger()); // Noncompliant
-    }
+    Class Circle{};
+
+    void fn(shared_ptr<Circle>&& circle);  // Noncompliant
+
     // lowercase suffixes
     const int        a = 0u;      // Noncompliant
     const int        b = 0l;      // Noncompliant
