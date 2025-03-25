@@ -73,6 +73,12 @@ int main() {
     // Violation: Use of atoi is forbidden.
     int num = atoi("123");
 
+    int carr[10];
+
+    void process() {
+        std::size_t size = sizeof(carr) / sizeof(int); // Noncompliant
+    }
+
     // lowercase suffixes
     const int        a = 0u;      // Noncompliant
     const int        b = 0l;      // Noncompliant
